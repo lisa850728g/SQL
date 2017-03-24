@@ -1,0 +1,39 @@
+For a number of years, I led the data science team for Google Search logs. We were often asked to make sense of confusing results, measure new phenomena from logged behavior, validate analyses done by others, and interpret metrics of user behavior. Some people seemed to be naturally good at doing this kind of high quality data analysis. These engineers and analysts were often described as “careful” and “methodical”. But what do those adjectives actually mean? What actions earn you these labels?
+
+
+
+To answer those questions, I put together a document shared Google-wide which I optimistically and simply titled “Good Data Analysis.” To my surprise, this document has been read more than anything else I’ve done at Google over the last eleven years. Even four years after the last major update, I find that there are multiple Googlers with the document open any time I check.
+
+
+
+Why has this document resonated with so many people over time? I think the main reason is that it’s full of specific actions to take, not just abstract ideals. I’ve seen many engineers and analysts pick up these habits and do high quality work with them. I'd like to share the contents of that document in this blog post.
+
+
+
+The advice is organized into three general areas:
+
+‧ Technical: Ideas and techniques for how to manipulate and examine your data.
+
+‧ Process: Recommendations on how you approach your data, what questions to ask, and what things to check.
+
+‧ Social: How to work with others and communicate about your data and insights.
+
+
+
+  
+
+Technical
+
+Look at your distributions
+
+While we typically use summary metrics (means, median, standard deviation, etc.) to communicate about distributions, you should usually be looking at a much richer representation of the distribution. Something like histograms, CDFs, Q-Q plots, etc. will allow you to see if there are important interesting features of the data such as multi-modal behavior or a significant class of outliers that you need to decide how to summarize.
+
+
+
+Consider the outliers
+
+You should look at the outliers in your data. They can be canaries in the coal mine for more fundamental problems with your analysis. It’s fine to exclude them from your data or to lump them together into an “Unusual” category, but you should make sure you know why data ended up in that category. For example, looking at the queries with the lowest click-through rate (CTR) may reveal clicks on elements in the user interface that you are failing to count. Looking at queries with the highest CTR may reveal clicks you should not be counting. On the other hand, some outliers you will never be able to explain so you need to be careful in how much time you devote this.
+
+
+
+
